@@ -1,7 +1,18 @@
+const inputField = document.getElementById('formInputField');
+
+inputField.addEventListener('click', (event) => {
+    inputField.style.outline = '2px solid #34cbcb';
+    inputField.style.border = '2px solid #34cbcb';
+});
+
+inputField.addEventListener('blur', (event) => {
+    inputField.style.outline = 'none';
+    inputField.style.border = '2px solid grey';
+})
+
 const greeting = () => 
 {
-    const inputField = document.getElementById('formInputField');
-    const greetingField = document.getElementById('greetingField');
+    const messageField = document.getElementById('messageField');
 
     const currentDate = new Date();
     const currentDay = currentDate.getDay();
@@ -39,23 +50,23 @@ const greeting = () =>
     let name = inputField.value ? inputField.value : 'user';
     // console.log(name);
     
-    if(currentDay < 6)
+    if(currentDay < 6 && currentDay !== 5)
     {
         leftDay = 6 - currentDay;
-        greetingField.innerText = `Hi ${name}. Today is ${currentDayName} and there are only ${leftDay} days left until the weekend!`
+        messageField.innerText = `Hi ${name} 👋️. Today is ${currentDayName} and there are only ${leftDay} days left until weekend!`;
         inputField.value = ' ';
         
     }
     else if(currentDay === 5)
     {
         leftDay = 6 - currentDay;
-        greetingField.innerText = `Hi ${name}. Today is ${currentDayName} and there is only ${leftDay} day left until the weekend!`
+        messageField.innerText = `Hi ${name} 👋️. Today is ${currentDayName} and there is only ${leftDay} day left until weekend!`;
         inputField.value = ' ';
         
     }
     else
     {
-        greetingField.innerText = `Hi ${name}. It is ${currentDayName}. and therefore weekend!`
+        messageField.innerText = `Hi ${name} 👋️. Today is ${currentDayName}, it's weekend!`;
         inputField.value = ' ';
     }
 }
